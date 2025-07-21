@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>LINE User ID</title>
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+</head>
+<body>
+  <h2>點擊按鈕查看你的 LINE userId</h2>
+  <button onclick="getUserId()">顯示我的 userId</button>
+  <p id="output" style="word-break: break-all; color: blue;"></p>
+
+  <script>
+    async function getUserId() {
+      await liff.init({ liffId: "YOUR_LIFF_ID" });  // 替換為你的 LIFF ID
+
+      if (!liff.isLoggedIn()) {
+        liff.login();
+      }
+
+      const profile = await liff.getProfile();
+      document.getElementById("output").innerText = "你的 userId 是：\n" + profile.userId;
+    }
+  </script>
+</body>
+</html>

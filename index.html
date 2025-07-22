@@ -4,11 +4,51 @@
   <meta charset="UTF-8">
   <title>LINE User ID</title>
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  <style>
+    /* 整體字體設定 */
+    body {
+      font-family: 'Microsoft JhengHei', sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    /* 標題文字樣式 */
+    h2 {
+      font-size: 28px;
+      color: #333;
+    }
+
+    /* 按鈕樣式 */
+    button {
+      font-size: 18px;
+      color: #ffffff;               /* 文字顏色 */
+      background-color: #28a745;    /* 背景色 */
+      border: 2px solid #1e7e34;    /* 邊框色 */
+      border-radius: 8px;           /* 圓角 */
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #218838;
+      border-color: #1c7430;
+    }
+
+    /* 顯示 userId 的區塊樣式 */
+    #output {
+      margin-top: 30px;
+      font-size: 20px;
+      color: #007bff;               /* 可自訂為其他顏色 */
+      font-family: 'Courier New', monospace;
+      white-space: pre-wrap;
+    }
+  </style>
 </head>
 <body>
-  <h2>點擊按鈕查看你的 LINE userId</h2>
-  <button onclick="getUserId()">顯示我的 userId</button>
-  <p id="output" style="word-break: break-all; color: blue;"></p>
+  <h2>點擊按鈕查看你的 LINE User ID</h2>
+  <button onclick="getUserId()">顯示我的 User ID</button>
+  <p id="output"></p>
 
   <script>
     async function getUserId() {
@@ -16,6 +56,7 @@
 
       if (!liff.isLoggedIn()) {
         liff.login();
+        return;
       }
 
       const profile = await liff.getProfile();
@@ -24,3 +65,4 @@
   </script>
 </body>
 </html>
+
